@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robotix | Robótica </title>
+    <title>Robotix | Robótica</title>
 
     <style>
         * {
@@ -11,17 +11,32 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --azul: #102a43;
+            --azul-claro: #183f5b;
+            --turquesa: #12b8a6;
+            --turquesa-oscuro: #087f8c;
+            --fondo: #f2f7fb;
+            --texto: #243447;
+            --suave: #536579;
+            --borde: #d9e4ee;
+            --blanco: #ffffff;
+        }
+
+        html { scroll-behavior: smooth; }
+
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4ed;
-            color: #202d35;
-            line-height: 1.6;
+            background-color: var(--fondo);
+            color: var(--texto);
+            line-height: 1.7;
         }
 
         header {
-            background-color: #173f35;
+            background: linear-gradient(115deg, var(--azul), var(--azul-claro));
             color: white;
             padding: 20px 8%;
+            box-shadow: 0 4px 18px rgba(16, 42, 67, .16);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -37,15 +52,15 @@
             text-decoration: none;
             margin-left: 18px;
             font-size: 15px;
+            font-weight: 600;
+            transition: color .2s ease;
         }
 
-        nav a:hover {
-            color: #b7e4c7;
-        }
+        nav a:hover { color: var(--turquesa); }
 
         .principal {
             padding: 75px 8%;
-            background-color: #dce9df;
+            background: linear-gradient(135deg, #e5f5f5, #eaf0fa 70%, #f2f7fb);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -62,6 +77,7 @@
             font-size: 45px;
             line-height: 1.2;
             margin-bottom: 20px;
+            color: var(--azul);
         }
 
         .principal p {
@@ -71,15 +87,19 @@
 
         .boton {
             display: inline-block;
-            background-color: #173f35;
+            background: var(--turquesa-oscuro);
             color: white;
             padding: 12px 22px;
-            border-radius: 6px;
+            border-radius: 8px;
             text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 5px 14px rgba(8, 127, 140, .18);
+            transition: transform .2s ease, background .2s ease;
         }
 
         .boton:hover {
-            background-color: #286b55;
+            background: var(--azul-claro);
+            transform: translateY(-2px);
         }
 
         .robot {
@@ -96,7 +116,7 @@
         section h2 {
             font-size: 30px;
             margin-bottom: 20px;
-            color: #173f35;
+            color: var(--azul);
         }
 
         .tarjetas {
@@ -107,27 +127,37 @@
         }
 
         .tarjeta {
-            background-color: white;
+            background-color: var(--blanco);
             padding: 25px;
-            border-radius: 10px;
-            border: 1px solid #d8ded8;
+            border-radius: 14px;
+            border: 1px solid var(--borde);
+            box-shadow: 0 8px 24px rgba(16, 42, 67, .055);
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(16, 42, 67, .10);
         }
 
         .tarjeta h3 {
             margin-bottom: 12px;
-            color: #286b55;
+            color: var(--turquesa-oscuro);
         }
 
-        .proceso {
-            background-color: #e4ebe4;
-        }
-
-        .equipo {
-            background-color: white;
-        }
+        .proceso { background-color: #e8f1f7; }
+        .equipo { background-color: #ffffff; }
+        .nota { color: var(--suave); font-size: .94rem; }
+        .tabla-contenedor { overflow-x: auto; margin-top: 18px; }
+        table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; }
+        th, td { border: 1px solid var(--borde); padding: 12px; text-align: left; vertical-align: top; }
+        th { background: var(--azul); color: white; }
+        tr:nth-child(even) td { background: #f7fafc; }
+        .etiqueta { display: inline-block; padding: 4px 9px; border-radius: 999px; background: #dff7f3; color: #086b66; font-size: .84rem; font-weight: 700; }
+        .aviso { padding: 16px 18px; border-left: 4px solid var(--turquesa); background: #e8f8f6; border-radius: 8px; margin-top: 18px; }
 
         footer {
-            background-color: #173f35;
+            background: linear-gradient(115deg, var(--azul), var(--azul-claro));
             color: white;
             text-align: center;
             padding: 25px;
@@ -139,9 +169,10 @@
                 gap: 12px;
             }
 
-            nav a {
-                margin: 0 7px;
-            }
+            nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+            nav a { margin: 0 4px; }
+            section { padding: 42px 6%; }
+            .principal { padding: 55px 6%; }
 
             .principal h2 {
                 font-size: 34px;
@@ -162,7 +193,10 @@
         <nav>
             <a href="#inicio">Inicio</a>
             <a href="#proyecto">Proyecto</a>
-            <a href="#proceso">Proceso</a>
+            <a href="#proceso">Etapas</a>
+            <a href="#viabilidad">Viabilidad</a>
+            <a href="#inventario">Inventario</a>
+            <a href="#bitacora">Bitácora</a>
             <a href="#equipo">Equipo</a>
         </nav>
     </header>
@@ -193,6 +227,10 @@
                 un robot funcional y conocer mejor cómo trabajan sus
                 componentes.
             </p>
+
+            <div class="aviso">
+                <strong>Problema que se busca resolver:</strong> se encontró la referencia a una iniciativa de robótica que quedó sin terminar, pero la información disponible no identifica su nombre exacto, la fecha en que se detuvo ni los materiales que tenía. Antes de afirmar esos datos, el equipo debe verificarlos con docentes, registros o integrantes anteriores y dejar constancia en el inventario inicial.
+            </div>
 
             <div class="tarjetas">
                 <article class="tarjeta">
@@ -225,39 +263,95 @@
         </section>
 
         <section class="proceso" id="proceso">
-            <h2>¿Cómo vamos a trabajar?</h2>
-
+            <h2>Etapas del proyecto por curso</h2>
+            <p>La distribución siguiente es una propuesta de trabajo para organizar el Proyecto de Promoción. El equipo y la institución deben confirmar las actividades y los plazos según su calendario real.</p>
             <div class="tarjetas">
                 <article class="tarjeta">
-                    <h3>01. Revisar</h3>
-                    <p>
-                        Identificar las piezas, los componentes y los
-                        materiales que tenemos disponibles.
-                    </p>
+                    <span class="etiqueta">1.º curso</span>
+                    <h3>Diagnóstico y evidencia inicial</h3>
+                    <ul>
+                        <li>Investigar cuál fue la iniciativa anterior y cuándo se interrumpió.</li>
+                        <li>Revisar y fotografiar las piezas disponibles.</li>
+                        <li>Registrar cantidad y estado de cada componente.</li>
+                        <li>Definir el problema y los objetivos del proyecto.</li>
+                    </ul>
                 </article>
-
                 <article class="tarjeta">
-                    <h3>02. Construir</h3>
-                    <p>
-                        Preparar una primera versión del robot y trabajar
-                        en su funcionamiento básico.
-                    </p>
+                    <span class="etiqueta">2.º curso</span>
+                    <h3>Diseño y construcción</h3>
+                    <ul>
+                        <li>Seleccionar las piezas que estén en condiciones de uso.</li>
+                        <li>Preparar el diseño y la lista de materiales faltantes.</li>
+                        <li>Construir y programar el prototipo con supervisión docente.</li>
+                        <li>Registrar gastos, cambios y pruebas realizadas.</li>
+                    </ul>
                 </article>
-
                 <article class="tarjeta">
-                    <h3>03. Probar y mejorar</h3>
-                    <p>
-                        Realizar pruebas, detectar errores y buscar
-                        soluciones para mejorar el resultado.
-                    </p>
+                    <span class="etiqueta">3.º curso</span>
+                    <h3>Pruebas y presentación</h3>
+                    <ul>
+                        <li>Probar el robot y documentar los resultados.</li>
+                        <li>Corregir fallas y evaluar el cumplimiento de objetivos.</li>
+                        <li>Organizar evidencias, bitácora y conclusiones.</li>
+                        <li>Presentar el prototipo y el informe final.</li>
+                    </ul>
                 </article>
             </div>
+        </section>
 
-            <p style="margin-top: 25px;">
-                Entre las funciones que podríamos explorar están seguir
-                una línea, detectar obstáculos y experimentar con sensores,
-                según los componentes disponibles.
-            </p>
+        <section id="viabilidad">
+            <h2>Viabilidad del proyecto</h2>
+            <div class="tarjetas">
+                <article class="tarjeta">
+                    <h3>Viabilidad técnica</h3>
+                    <p>El proyecto puede avanzar si se identifican componentes recuperables, se dispone de herramientas básicas y se cuenta con acompañamiento docente para el montaje y la programación. La viabilidad definitiva debe confirmarse después del inventario y de comprobar qué piezas funcionan.</p>
+                </article>
+                <article class="tarjeta">
+                    <h3>Viabilidad legal y de seguridad</h3>
+                    <p>El trabajo debe realizarse con autorización de la institución y supervisión docente. Se deben respetar las normas del centro educativo, usar los materiales de forma segura, evitar conexiones eléctricas riesgosas y solicitar permiso antes de publicar fotografías o datos personales de estudiantes.</p>
+                </article>
+                <article class="tarjeta">
+                    <h3>Viabilidad económica</h3>
+                    <p>La propuesta prioriza reutilizar piezas disponibles para reducir costos. Luego del inventario se elaborará una lista de materiales faltantes y un presupuesto con precios reales. No se puede fijar un costo total confiable hasta conocer qué componentes sirven y cuáles deben comprarse.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="proceso" id="inventario">
+            <h2>Inventario inicial de piezas</h2>
+            <p>Este inventario es la primera evidencia que debe completar el equipo durante la revisión física. Como el archivo original no incluye un registro de piezas encontradas, las cantidades y los estados quedan pendientes de verificación; no deben presentarse como datos ya observados.</p>
+            <div class="tabla-contenedor">
+                <table>
+                    <thead><tr><th>Componente</th><th>Cantidad encontrada</th><th>Estado observado</th><th>Evidencia / observación</th></tr></thead>
+                    <tbody>
+                        <tr><td>Placa controladora o microcontrolador</td><td>Completar al revisar</td><td>Sin verificar</td><td>Anotar modelo, daños visibles y fotografía.</td></tr>
+                        <tr><td>Sensores</td><td>Completar al revisar</td><td>Sin verificar</td><td>Identificar tipo y comprobar funcionamiento si es seguro.</td></tr>
+                        <tr><td>Motores y ruedas</td><td>Completar al revisar</td><td>Sin verificar</td><td>Registrar cantidad, piezas faltantes y estado físico.</td></tr>
+                        <tr><td>Cables y conectores</td><td>Completar al revisar</td><td>Sin verificar</td><td>Revisar cortes, conectores sueltos o corrosión.</td></tr>
+                        <tr><td>Batería o portapilas</td><td>Completar al revisar</td><td>Sin verificar</td><td>No conectar si está hinchada, dañada o presenta fugas.</td></tr>
+                        <tr><td>Chasis y estructura</td><td>Completar al revisar</td><td>Sin verificar</td><td>Registrar grietas, deformaciones y tornillos faltantes.</td></tr>
+                        <tr><td>Otros componentes</td><td>Completar al revisar</td><td>Sin verificar</td><td>Especificar nombre, cantidad y condición.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="nota" style="margin-top:14px;">Evidencia recomendada: fotos numeradas de las piezas, fecha de revisión, nombre de quien hizo el registro y firma o validación del docente responsable.</p>
+        </section>
+
+        <section id="bitacora">
+            <h2>Bitácora de trabajo</h2>
+            <p>La bitácora debe registrar avances reales. No se inventaron fechas ni tareas realizadas porque el documento original no contiene esos datos. Completen cada fila el día en que se realice la actividad.</p>
+            <div class="tabla-contenedor">
+                <table>
+                    <thead><tr><th>Fecha real</th><th>Actividad</th><th>Avance o resultado</th><th>Responsable</th><th>Evidencia</th></tr></thead>
+                    <tbody>
+                        <tr><td>Completar</td><td>Consulta sobre la iniciativa anterior</td><td>Registrar qué se averiguó, con quién y de qué fuente.</td><td>Equipo de investigación</td><td>Notas, entrevista o documento.</td></tr>
+                        <tr><td>Completar</td><td>Inventario de componentes</td><td>Anotar cantidades y estado real de cada pieza.</td><td>Responsables de inventario</td><td>Tabla y fotografías.</td></tr>
+                        <tr><td>Completar</td><td>Diseño y planificación</td><td>Adjuntar boceto, esquema y lista de materiales faltantes.</td><td>Responsables de diseño</td><td>Boceto o diagrama.</td></tr>
+                        <tr><td>Completar</td><td>Montaje o programación</td><td>Describir qué se armó o programó y qué dificultades hubo.</td><td>Responsables técnicos</td><td>Fotos, código o notas.</td></tr>
+                        <tr><td>Completar</td><td>Pruebas y correcciones</td><td>Registrar resultado de cada prueba y ajustes realizados.</td><td>Equipo técnico</td><td>Tabla de pruebas o video.</td></tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <section class="equipo" id="equipo">
@@ -271,32 +365,32 @@
             <div class="tarjetas">
                 <article class="tarjeta">
                     <h3>Alexis Burgos</h3>
-                    <p>Integrante del equipo Robotix.</p>
+                    <p>Coordinación del equipo y seguimiento del cronograma.</p>
                 </article>
 
                 <article class="tarjeta">
                     <h3>Oscar Zaracho</h3>
-                    <p>Integrante del equipo Robotix.</p>
+                    <p>Inventario de componentes y registro fotográfico.</p>
                 </article>
 
                 <article class="tarjeta">
                     <h3>Junior Torres</h3>
-                    <p>Integrante del equipo Robotix.</p>
+                    <p>Desarrollo y actualización del sitio web del proyecto.</p>
                 </article>
 		
 		<article class="tarjeta">
                     <h3>Luis Garay</h3>
-                    <p>Integrante del equipo Robotix.</p>
+                    <p>Revisión física y clasificación de las piezas.</p>
                 </article>
 
 		<article class="tarjeta">
                     <h3>Santiago German</h3>
-                    <p>Integrante del equipo Robotix.</p>
+                    <p>Investigación técnica y apoyo en las pruebas del prototipo.</p>
                 </article>
 
 		<article class="tarjeta">
                     <h3>Alexis Fernandes</h3>
-                    <p>Integrante del equipo Robotix.</p>
+                    <p>Bitácora, organización de evidencias y apoyo en la presentación.</p>
                 </article>
 
 
@@ -308,8 +402,9 @@
             </p>
 
             <p>
-                <strong>Curso:</strong> 1.º Batín - Continuado
+                <strong>Curso:</strong> 1.º BATIN - Continuado
             </p>
+            <p class="nota" style="margin-top:12px;">Los roles son una propuesta inicial basada en tareas del proyecto. Confirmen con cada integrante que la función asignada corresponde al trabajo que realmente realizará.</p>
         </section>
 
     </main>

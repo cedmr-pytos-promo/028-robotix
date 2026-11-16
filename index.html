@@ -1,418 +1,540 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robotix | Robótica</title>
+    <meta name="description" content="Robotix: proyecto de reactivación del Club de Robótica del Centro Educativo Departamental Miguela Rodríguez.">
+    <title>Robotix | La tecnología en movimiento</title>
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --azul: #102a43;
-            --azul-claro: #183f5b;
-            --turquesa: #12b8a6;
-            --turquesa-oscuro: #087f8c;
-            --fondo: #f2f7fb;
-            --texto: #243447;
-            --suave: #536579;
-            --borde: #d9e4ee;
+            --azul: #18364b;
+            --azul-claro: #28536a;
+            --turquesa: #36a99c;
+            --turquesa-oscuro: #247f78;
+            --fondo: #f4f7f6;
+            --fondo-suave: #eaf2f0;
+            --texto: #293b43;
+            --suave: #64757a;
+            --borde: #dce6e3;
             --blanco: #ffffff;
+            --sombra: 0 8px 24px rgba(24, 54, 75, .07);
         }
 
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; scroll-padding-top: 105px; }
 
         body {
-            font-family: Arial, sans-serif;
-            background-color: var(--fondo);
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--fondo);
             color: var(--texto);
             line-height: 1.7;
         }
 
         header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
             background: linear-gradient(115deg, var(--azul), var(--azul-claro));
-            color: white;
-            padding: 20px 8%;
-            box-shadow: 0 4px 18px rgba(16, 42, 67, .16);
+            color: var(--blanco);
+            padding: 15px 6%;
+            box-shadow: 0 4px 18px rgba(16, 42, 67, .14);
+        }
+
+        .encabezado {
+            max-width: 1250px;
+            margin: auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 18px;
             flex-wrap: wrap;
         }
 
-        header h1 {
-            font-size: 30px;
+        header h1 { font-size: 28px; letter-spacing: .5px; }
+        .submarca { color: #cce5e1; font-size: 12px; margin-top: -4px; }
+
+        nav {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 5px 13px;
         }
 
         nav a {
-            color: white;
+            color: #f5fbfa;
             text-decoration: none;
-            margin-left: 18px;
-            font-size: 15px;
+            font-size: 13px;
             font-weight: 600;
-            transition: color .2s ease;
+            padding: 5px 2px;
+            border-bottom: 2px solid transparent;
+            transition: .2s ease;
         }
-
-        nav a:hover { color: var(--turquesa); }
+        nav a:hover, nav a:focus { color: #9ce0d5; border-color: #9ce0d5; }
 
         .principal {
-            padding: 75px 8%;
-            background: linear-gradient(135deg, #e5f5f5, #eaf0fa 70%, #f2f7fb);
+            padding: 78px 8%;
+            background: linear-gradient(130deg, #e3f0ed, #edf3f6 68%, #f4f7f6);
+        }
+
+        .principal-contenido {
+            max-width: 1120px;
+            margin: auto;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 40px;
-            flex-wrap: wrap;
+            gap: 35px;
         }
 
-        .principal-texto {
-            flex: 1;
-            min-width: 260px;
+        .principal-texto { max-width: 760px; }
+        .sobretitulo {
+            display: inline-block;
+            color: var(--turquesa-oscuro);
+            background: #d9eeea;
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 15px;
         }
 
         .principal h2 {
-            font-size: 45px;
-            line-height: 1.2;
-            margin-bottom: 20px;
+            font-size: clamp(34px, 5vw, 49px);
+            line-height: 1.15;
+            margin-bottom: 18px;
             color: var(--azul);
         }
 
-        .principal p {
-            font-size: 18px;
-            margin-bottom: 25px;
-        }
+        .principal p { font-size: 18px; color: #435961; max-width: 700px; }
+        .datos-portada { margin-top: 20px; color: var(--suave); font-size: 14px; }
+        .robot { font-size: 112px; flex-shrink: 0; }
 
         .boton {
             display: inline-block;
+            margin-top: 24px;
             background: var(--turquesa-oscuro);
             color: white;
-            padding: 12px 22px;
+            padding: 11px 21px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
-            box-shadow: 0 5px 14px rgba(8, 127, 140, .18);
             transition: transform .2s ease, background .2s ease;
         }
+        .boton:hover { background: var(--azul-claro); transform: translateY(-2px); }
 
-        .boton:hover {
-            background: var(--azul-claro);
-            transform: translateY(-2px);
-        }
-
-        .robot {
-            flex: 1;
-            min-width: 230px;
-            text-align: center;
-            font-size: 125px;
-        }
-
-        section {
-            padding: 55px 8%;
-        }
-
+        section { padding: 58px 8%; scroll-margin-top: 105px; }
+        .contenedor { max-width: 1120px; margin: auto; }
         section h2 {
-            font-size: 30px;
-            margin-bottom: 20px;
             color: var(--azul);
+            font-size: 30px;
+            line-height: 1.25;
+            margin-bottom: 17px;
         }
+        section h3 { color: var(--turquesa-oscuro); margin-bottom: 9px; font-size: 19px; }
+        p { margin-bottom: 13px; }
+        .introduccion-seccion { max-width: 900px; color: #4b6067; }
 
         .tarjetas {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 22px;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
             margin-top: 25px;
         }
-
         .tarjeta {
-            background-color: var(--blanco);
-            padding: 25px;
-            border-radius: 14px;
+            background: var(--blanco);
+            padding: 23px;
+            border-radius: 13px;
             border: 1px solid var(--borde);
-            box-shadow: 0 8px 24px rgba(16, 42, 67, .055);
-            transition: transform .2s ease, box-shadow .2s ease;
+            box-shadow: var(--sombra);
         }
-
-        .tarjeta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 28px rgba(16, 42, 67, .10);
+        .tarjeta p:last-child { margin-bottom: 0; }
+        .proceso { background: var(--fondo-suave); }
+        .equipo { background: #fff; }
+        .etiqueta {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 30px;
+            background: #dcefeb;
+            color: #216e67;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 10px;
         }
-
-        .tarjeta h3 {
-            margin-bottom: 12px;
-            color: var(--turquesa-oscuro);
+        .aviso {
+            padding: 16px 18px;
+            border-left: 4px solid var(--turquesa);
+            background: #e7f3f0;
+            border-radius: 8px;
+            margin-top: 18px;
         }
+        .nota { color: var(--suave); font-size: .93rem; }
+        ul { padding-left: 21px; margin: 8px 0 0; }
+        li { margin-bottom: 7px; }
 
-        .proceso { background-color: #e8f1f7; }
-        .equipo { background-color: #ffffff; }
-        .nota { color: var(--suave); font-size: .94rem; }
-        .tabla-contenedor { overflow-x: auto; margin-top: 18px; }
-        table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; }
-        th, td { border: 1px solid var(--borde); padding: 12px; text-align: left; vertical-align: top; }
-        th { background: var(--azul); color: white; }
-        tr:nth-child(even) td { background: #f7fafc; }
-        .etiqueta { display: inline-block; padding: 4px 9px; border-radius: 999px; background: #dff7f3; color: #086b66; font-size: .84rem; font-weight: 700; }
-        .aviso { padding: 16px 18px; border-left: 4px solid var(--turquesa); background: #e8f8f6; border-radius: 8px; margin-top: 18px; }
+        .tabla-contenedor { overflow-x: auto; margin-top: 18px; border-radius: 10px; box-shadow: var(--sombra); }
+        table { width: 100%; min-width: 650px; border-collapse: collapse; background: white; }
+        th, td { border: 1px solid var(--borde); padding: 12px 13px; text-align: left; vertical-align: top; }
+        th { background: var(--azul); color: white; font-size: 14px; }
+        td { font-size: 14px; }
+        tr:nth-child(even) td { background: #f7faf9; }
+
+        .numero { color: var(--turquesa-oscuro); font-weight: 700; margin-right: 5px; }
+        .pie-seccion { margin-top: 18px; }
 
         footer {
             background: linear-gradient(115deg, var(--azul), var(--azul-claro));
             color: white;
             text-align: center;
-            padding: 25px;
+            padding: 27px 15px;
         }
+        footer p { margin: 3px 0; }
+        footer .nota-pie { color: #c9dcd9; font-size: 13px; }
 
-        @media (max-width: 600px) {
-            header {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
-            nav a { margin: 0 4px; }
-            section { padding: 42px 6%; }
+        @media (max-width: 760px) {
+            header { position: static; padding: 16px 5%; }
+            .encabezado { flex-direction: column; align-items: flex-start; }
+            nav { gap: 5px 12px; }
+            nav a { font-size: 13px; }
             .principal { padding: 55px 6%; }
-
-            .principal h2 {
-                font-size: 34px;
-            }
-
-            .robot {
-                font-size: 90px;
-            }
+            .principal-contenido { flex-direction: column; align-items: flex-start; }
+            .robot { font-size: 76px; align-self: center; }
+            section { padding: 43px 6%; }
+            section h2 { font-size: 26px; }
         }
     </style>
 </head>
 
 <body>
-
-    <header>
-        <h1>Robotix</h1>
-
-        <nav>
+<header>
+    <div class="encabezado">
+        <div>
+            <h1>Robotix</h1>
+            <div class="submarca">La tecnología en movimiento</div>
+        </div>
+        <nav aria-label="Navegación principal">
             <a href="#inicio">Inicio</a>
-            <a href="#proyecto">Proyecto</a>
-            <a href="#proceso">Etapas</a>
-            <a href="#viabilidad">Viabilidad</a>
+            <a href="#presentacion">Presentación</a>
+            <a href="#problema">Problema</a>
+            <a href="#objetivos">Objetivos</a>
+            <a href="#justificacion">Justificación</a>
+            <a href="#propuesta">Club</a>
+            <a href="#alcance">Actividades</a>
+            <a href="#metodologia">Metodología</a>
             <a href="#inventario">Inventario</a>
-            <a href="#bitacora">Bitácora</a>
             <a href="#equipo">Equipo</a>
+            <a href="#cronograma">Cronograma</a>
+            <a href="#evaluacion">Evaluación</a>
+            <a href="#productos">Productos</a>
+            <a href="#conclusiones">Conclusiones</a>
         </nav>
-    </header>
+    </div>
+</header>
 
-    <main>
-
-        <section class="principal" id="inicio">
+<main>
+    <section class="principal" id="inicio">
+        <div class="principal-contenido">
             <div class="principal-texto">
-                <h2>Ideas que se mueven, robots que aprenden.</h2>
-
-                <p>
-                    Somos Robotix, un proyecto que busca despertar
-                    el interés por la robótica y la informática mediante
-                    actividades prácticas, creatividad y trabajo en equipo.
-                </p>
-
-                <a class="boton" href="#proyecto">Conocer el proyecto</a>
+                <span class="sobretitulo">Proyecto de reactivación del Club de Robótica</span>
+                <h2>Robotix: aprender, experimentar y crear.</h2>
+                <p>Una propuesta para recuperar el Club de Robótica como espacio educativo y práctico, donde los estudiantes puedan acercarse a la tecnología, trabajar en equipo y desarrollar proyectos progresivamente.</p>
+                <div class="datos-portada">
+                    Centro Educativo Departamental Miguela Rodríguez<br>
+                    1.º BATIN – Continuado
+                </div>
+                <a class="boton" href="#presentacion">Conocer el proyecto</a>
             </div>
-        </section>
+            <div class="robot" aria-hidden="true">🤖</div>
+        </div>
+    </section>
 
-        <section id="proyecto">
-            <h2>Sobre el proyecto</h2>
+    <section id="presentacion">
+        <div class="contenedor">
+            <h2>1. Presentación del proyecto</h2>
+            <p class="introduccion-seccion">Robotix propone reactivar el Club de Robótica de la institución. El club combinará explicaciones breves, demostraciones y actividades prácticas. Se comenzará con conceptos accesibles y se avanzará según los conocimientos de los participantes, los materiales recuperados y la disponibilidad institucional.</p>
+            <p>A futuro, el grupo podrá prepararse para participar en competencias de robótica y encuentros con otras instituciones, siempre que existan las condiciones necesarias y la autorización correspondiente.</p>
+        </div>
+    </section>
 
-            <p>
-                Robotix nace con la idea de retomar una iniciativa de
-                robótica que quedó sin terminar y aprovechar los recursos
-                disponibles para continuar aprendiendo. Queremos construir
-                un robot funcional y conocer mejor cómo trabajan sus
-                componentes.
-            </p>
+    <section class="proceso" id="problema">
+        <div class="contenedor">
+            <h2>2. Definición del problema</h2>
+            <p>La robótica puede resultar difícil de comprender cuando se estudia únicamente de forma teórica. Además, la institución contó anteriormente con un club o iniciativa de robótica que dejó de funcionar.</p>
+            <div class="aviso"><strong>Oportunidad identificada:</strong> reactivar esa iniciativa como un espacio estable de aprendizaje, experimentación y colaboración. </div>
+        </div>
+    </section>
 
-            <div class="aviso">
-                <strong>Problema que se busca resolver:</strong> se encontró la referencia a una iniciativa de robótica que quedó sin terminar, pero la información disponible no identifica su nombre exacto, la fecha en que se detuvo ni los materiales que tenía. Antes de afirmar esos datos, el equipo debe verificarlos con docentes, registros o integrantes anteriores y dejar constancia en el inventario inicial.
+    <section id="objetivos">
+        <div class="contenedor">
+            <h2>3. Objetivos</h2>
+            <div class="tarjeta">
+                <h3>Objetivo general</h3>
+                <p>Reactivar el Club de Robótica “Robotix” como un espacio educativo y práctico donde los estudiantes puedan aprender fundamentos de robótica, experimentar con prototipos y desarrollar progresivamente proyectos.</p>
             </div>
-
             <div class="tarjetas">
-                <article class="tarjeta">
-                    <h3>¿Por qué es importante?</h3>
-                    <p>
-                        Porque la robótica permite aprender de una forma
-                        práctica y entretenida, relacionando la informática
-                        con la creatividad y la resolución de problemas.
-                    </p>
-                </article>
-
-                <article class="tarjeta">
-                    <h3>Nuestro objetivo</h3>
-                    <p>
-                        Revisar los materiales disponibles, recuperar lo
-                        que pueda utilizarse y desarrollar un primer robot
-                        que pueda probarse y mejorarse.
-                    </p>
-                </article>
-
-                <article class="tarjeta">
-                    <h3>¿Qué queremos aprender?</h3>
-                    <p>
-                        Queremos conocer el funcionamiento de los sensores,
-                        los movimientos del robot y los principios básicos
-                        de la programación.
-                    </p>
-                </article>
+                <article class="tarjeta"><h3>Objetivos específicos</h3><ul>
+                    <li>Realizar un inventario de los robots, piezas, placas, sensores, motores, herramientas y materiales de la iniciativa anterior.</li>
+                    <li>Comprobar el estado de los componentes y organizar su almacenamiento y uso responsable.</li>
+                    <li>Convocar a estudiantes interesados en aprender robótica, sin exigir conocimientos previos.</li>
+                    <li>Planificar sesiones dinámicas que combinen teoría básica y práctica.</li>
+                </ul></article>
+                <article class="tarjeta"><h3>Aprendizaje progresivo</h3><ul>
+                    <li>Enseñar conceptos de electrónica, programación, movimiento, sensores y armado de prototipos, según los recursos disponibles.</li>
+                    <li>Promover el trabajo en equipo, la resolución de problemas, la creatividad y el registro de aprendizajes.</li>
+                    <li>Explorar, en etapas posteriores, la participación en competencias o actividades con otras instituciones.</li>
+                </ul></article>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="proceso" id="proceso">
-            <h2>Etapas del proyecto por curso</h2>
-            <p>La distribución siguiente es una propuesta de trabajo para organizar el Proyecto de Promoción. El equipo y la institución deben confirmar las actividades y los plazos según su calendario real.</p>
+    <section class="proceso" id="justificacion">
+        <div class="contenedor">
+            <h2>4. Justificación</h2>
+            <p>La reapertura del club permitirá acercar la tecnología a los estudiantes mediante experiencias concretas. Manipular piezas, probar instrucciones y observar cómo responde un prototipo puede hacer que los conceptos de programación y electrónica sean más comprensibles y atractivos.</p>
+            <p>La propuesta también busca recuperar una iniciativa institucional, aprovechar los materiales que se encuentren en condiciones adecuadas y crear un espacio de aprendizaje colaborativo.</p>
+            <div class="aviso">El enfoque será educativo: los prototipos se utilizarán para practicar y demostrar conocimientos, no como dispositivos certificados de seguridad.</div>
+        </div>
+    </section>
+
+    <section id="propuesta">
+        <div class="contenedor">
+            <h2>5. Público destinatario y propuesta del club</h2>
+            <p>El club estará dirigido principalmente a estudiantes de la institución que manifiesten interés en la robótica y la tecnología. La participación se organizará de acuerdo con la capacidad del espacio, la disponibilidad de materiales y las normas de la institución.</p>
             <div class="tarjetas">
-                <article class="tarjeta">
-                    <span class="etiqueta">1.º curso</span>
-                    <h3>Diagnóstico y evidencia inicial</h3>
-                    <ul>
-                        <li>Investigar cuál fue la iniciativa anterior y cuándo se interrumpió.</li>
-                        <li>Revisar y fotografiar las piezas disponibles.</li>
-                        <li>Registrar cantidad y estado de cada componente.</li>
-                        <li>Definir el problema y los objetivos del proyecto.</li>
-                    </ul>
-                </article>
-                <article class="tarjeta">
-                    <span class="etiqueta">2.º curso</span>
-                    <h3>Diseño y construcción</h3>
-                    <ul>
-                        <li>Seleccionar las piezas que estén en condiciones de uso.</li>
-                        <li>Preparar el diseño y la lista de materiales faltantes.</li>
-                        <li>Construir y programar el prototipo con supervisión docente.</li>
-                        <li>Registrar gastos, cambios y pruebas realizadas.</li>
-                    </ul>
-                </article>
-                <article class="tarjeta">
-                    <span class="etiqueta">3.º curso</span>
-                    <h3>Pruebas y presentación</h3>
-                    <ul>
-                        <li>Probar el robot y documentar los resultados.</li>
-                        <li>Corregir fallas y evaluar el cumplimiento de objetivos.</li>
-                        <li>Organizar evidencias, bitácora y conclusiones.</li>
-                        <li>Presentar el prototipo y el informe final.</li>
-                    </ul>
-                </article>
+                <article class="tarjeta"><h3>Participantes</h3><p>Estudiantes de la institución interesados en aprender robótica. No se exigirán conocimientos previos.</p></article>
+                <article class="tarjeta"><h3>Encuentros propuestos</h3><p>Los sábados, aproximadamente a las 14:00, con una duración de una hora y media.</p><p class="nota">Horario tentativo, pendiente de confirmación con la institución y la docente tutora.</p></article>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="viabilidad">
-            <h2>Viabilidad del proyecto</h2>
+    <section class="proceso" id="alcance">
+        <div class="contenedor">
+            <h2>6. Alcance y actividades</h2>
+            <p>La primera etapa contempla la organización y reapertura del club: inventario, revisión de recursos, convocatoria, planificación de contenidos y preparación de las primeras sesiones. La construcción de prototipos y el avance técnico se desarrollarán gradualmente.</p>
             <div class="tarjetas">
-                <article class="tarjeta">
-                    <h3>Viabilidad técnica</h3>
-                    <p>El proyecto puede avanzar si se identifican componentes recuperables, se dispone de herramientas básicas y se cuenta con acompañamiento docente para el montaje y la programación. La viabilidad definitiva debe confirmarse después del inventario y de comprobar qué piezas funcionan.</p>
-                </article>
-                <article class="tarjeta">
-                    <h3>Viabilidad legal y de seguridad</h3>
-                    <p>El trabajo debe realizarse con autorización de la institución y supervisión docente. Se deben respetar las normas del centro educativo, usar los materiales de forma segura, evitar conexiones eléctricas riesgosas y solicitar permiso antes de publicar fotografías o datos personales de estudiantes.</p>
-                </article>
-                <article class="tarjeta">
-                    <h3>Viabilidad económica</h3>
-                    <p>La propuesta prioriza reutilizar piezas disponibles para reducir costos. Luego del inventario se elaborará una lista de materiales faltantes y un presupuesto con precios reales. No se puede fijar un costo total confiable hasta conocer qué componentes sirven y cuáles deben comprarse.</p>
-                </article>
+                <article class="tarjeta"><h3>Actividades previstas</h3><ul>
+                    <li>Inventario y clasificación de componentes: disponibles, por revisar, dañados o faltantes.</li>
+                    <li>Introducción a la robótica: qué es un robot y cómo interactúan sus componentes.</li>
+                    <li>Reconocimiento de piezas, herramientas y normas de seguridad.</li>
+                    <li>Conceptos iniciales de electricidad y circuitos sencillos.</li>
+                </ul></article>
+                <article class="tarjeta"><h3>Práctica y desarrollo</h3><ul>
+                    <li>Introducción a la programación mediante instrucciones y secuencias.</li>
+                    <li>Prácticas guiadas con prototipos existentes o armados con los materiales disponibles.</li>
+                    <li>Pruebas, corrección de errores y documentación de resultados.</li>
+                    <li>Proyectos grupales y, en etapas futuras, preparación para muestras o competencias.</li>
+                </ul></article>
+                <article class="tarjeta"><h3>Fuera del alcance inicial</h3><ul>
+                    <li>Actividades ajenas al propósito educativo y formativo del club.</li>
+                    <li>Presentar prototipos como sistemas profesionales o certificados de seguridad.</li>
+                    <li>Prometer competencias antes de confirmar requisitos, recursos y autorizaciones.</li>
+                    <li>Comprar materiales sin inventario previo, presupuesto y aprobación institucional.</li>
+                </ul></article>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="proceso" id="inventario">
-            <h2>Inventario inicial de piezas</h2>
-            <p>Este inventario es la primera evidencia que debe completar el equipo durante la revisión física. Como el archivo original no incluye un registro de piezas encontradas, las cantidades y los estados quedan pendientes de verificación; no deben presentarse como datos ya observados.</p>
+    <section id="metodologia">
+        <div class="contenedor">
+            <h2>7. Metodología de las sesiones</h2>
+            <p>Cada encuentro tendrá una estructura flexible, dinámica y orientada a la práctica. La duración propuesta es de 90 minutos.</p>
             <div class="tabla-contenedor">
                 <table>
-                    <thead><tr><th>Componente</th><th>Cantidad encontrada</th><th>Estado observado</th><th>Evidencia / observación</th></tr></thead>
+                    <thead><tr><th>Momento</th><th>Duración aproximada</th><th>Actividad</th></tr></thead>
                     <tbody>
-                        <tr><td>Placa controladora o microcontrolador</td><td>Completar al revisar</td><td>Sin verificar</td><td>Anotar modelo, daños visibles y fotografía.</td></tr>
-                        <tr><td>Sensores</td><td>Completar al revisar</td><td>Sin verificar</td><td>Identificar tipo y comprobar funcionamiento si es seguro.</td></tr>
-                        <tr><td>Motores y ruedas</td><td>Completar al revisar</td><td>Sin verificar</td><td>Registrar cantidad, piezas faltantes y estado físico.</td></tr>
-                        <tr><td>Cables y conectores</td><td>Completar al revisar</td><td>Sin verificar</td><td>Revisar cortes, conectores sueltos o corrosión.</td></tr>
-                        <tr><td>Batería o portapilas</td><td>Completar al revisar</td><td>Sin verificar</td><td>No conectar si está hinchada, dañada o presenta fugas.</td></tr>
-                        <tr><td>Chasis y estructura</td><td>Completar al revisar</td><td>Sin verificar</td><td>Registrar grietas, deformaciones y tornillos faltantes.</td></tr>
-                        <tr><td>Otros componentes</td><td>Completar al revisar</td><td>Sin verificar</td><td>Especificar nombre, cantidad y condición.</td></tr>
+                        <tr><td>Bienvenida y repaso</td><td>10 minutos</td><td>Recordar lo aprendido y presentar el objetivo del día.</td></tr>
+                        <tr><td>Explicación y demostración</td><td>15–20 minutos</td><td>Introducir un concepto con ejemplos sencillos.</td></tr>
+                        <tr><td>Práctica guiada</td><td>45–50 minutos</td><td>Trabajar en equipos con piezas o prototipos.</td></tr>
+                        <tr><td>Prueba y reflexión</td><td>10 minutos</td><td>Observar resultados, detectar errores y compartir aprendizajes.</td></tr>
+                        <tr><td>Cierre</td><td>5 minutos</td><td>Registrar avances y anticipar la próxima sesión.</td></tr>
                     </tbody>
                 </table>
             </div>
-            <p class="nota" style="margin-top:14px;">Evidencia recomendada: fotos numeradas de las piezas, fecha de revisión, nombre de quien hizo el registro y firma o validación del docente responsable.</p>
-        </section>
+            <p class="nota pie-seccion">La distribución del tiempo podrá modificarse según el tema y la experiencia de los participantes. Se priorizará que todos puedan experimentar, colaborar y preguntar.</p>
+        </div>
+    </section>
 
-        <section id="bitacora">
-            <h2>Bitácora de trabajo</h2>
-            <p>La bitácora debe registrar avances reales. No se inventaron fechas ni tareas realizadas porque el documento original no contiene esos datos. Completen cada fila el día en que se realice la actividad.</p>
-            <div class="tabla-contenedor">
-                <table>
-                    <thead><tr><th>Fecha real</th><th>Actividad</th><th>Avance o resultado</th><th>Responsable</th><th>Evidencia</th></tr></thead>
-                    <tbody>
-                        <tr><td>Completar</td><td>Consulta sobre la iniciativa anterior</td><td>Registrar qué se averiguó, con quién y de qué fuente.</td><td>Equipo de investigación</td><td>Notas, entrevista o documento.</td></tr>
-                        <tr><td>Completar</td><td>Inventario de componentes</td><td>Anotar cantidades y estado real de cada pieza.</td><td>Responsables de inventario</td><td>Tabla y fotografías.</td></tr>
-                        <tr><td>Completar</td><td>Diseño y planificación</td><td>Adjuntar boceto, esquema y lista de materiales faltantes.</td><td>Responsables de diseño</td><td>Boceto o diagrama.</td></tr>
-                        <tr><td>Completar</td><td>Montaje o programación</td><td>Describir qué se armó o programó y qué dificultades hubo.</td><td>Responsables técnicos</td><td>Fotos, código o notas.</td></tr>
-                        <tr><td>Completar</td><td>Pruebas y correcciones</td><td>Registrar resultado de cada prueba y ajustes realizados.</td><td>Equipo técnico</td><td>Tabla de pruebas o video.</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section class="equipo" id="equipo">
-            <h2>Integrantes del equipo</h2>
-
-            <p>
-                Este proyecto se desarrolla con la colaboración y las
-                ideas de todos los integrantes.
-            </p>
+    <section class="proceso" id="inventario">
+        <div class="contenedor">
+            <h2>8. Inventario y viabilidad</h2>
+            <h3>Inventario del kit VEX IQ de segunda generación – Competición</h3>
+            <p>El kit VEX IQ de segunda generación para competición reúne componentes electrónicos, piezas estructurales y elementos de movimiento para construir y programar robots. La lista siguiente corresponde al contenido publicado para este kit y sirve como referencia para organizar sus piezas.</p>
+            <div class="aviso"><strong>Contenido del kit:</strong> 1.773 piezas en total, distribuidas en cuatro cajas con bandejas organizadoras.</div>
 
             <div class="tarjetas">
                 <article class="tarjeta">
-                    <h3>Alexis Burgos</h3>
-                    <p>Coordinación del equipo y seguimiento del cronograma.</p>
+                    <h3>Electrónica y control</h3>
+                    <ul>
+                        <li>1 cerebro o controlador de robot móvil VEX IQ de segunda generación.</li>
+                        <li>1 controlador manual tipo videojuego.</li>
+                        <li>6 motores inteligentes.</li>
+                        <li>1 batería recargable de ion-litio de 2000 mAh.</li>
+                        <li>1 componente LED táctil.</li>
+                        <li>1 interruptor de colisión.</li>
+                        <li>1 sensor óptico.</li>
+                        <li>1 sensor de distancia.</li>
+                        <li>2 cables de 600 mm.</li>
+                        <li>2 cables de 400 mm.</li>
+                        <li>2 cables de 300 mm.</li>
+                        <li>2 cables de 200 mm.</li>
+                        <li>1 cable USB A-C.</li>
+                    </ul>
                 </article>
-
                 <article class="tarjeta">
-                    <h3>Oscar Zaracho</h3>
-                    <p>Inventario de componentes y registro fotográfico.</p>
+                    <h3>Estructura: vigas y placas</h3>
+                    <ul>
+                        <li>Vigas de 1x2, 1x3, 1x4, 1x5, 1x6, 1x7, 1x8, 1x9, 1x10, 1x11, 1x12, 1x13, 1x14, 1x16, 1x18 y 1x20.</li>
+                        <li>Vigas de 2x2, 2x3, 2x4, 2x5, 2x6, 2x7, 2x8, 2x9, 2x10, 2x11, 2x12, 2x14, 2x16, 2x18 y 2x20.</li>
+                        <li>Placas de 3x3, 3x4, 3x6, 3x10, 3x16, 4x4 y 4x8.</li>
+                        <li>Vigas en T, vigas angulares, vigas de bloqueo, vigas de cuña y vigas de cercha.</li>
+                        <li>Placas de plástico de 2x12, 6x6 y 6x12.</li>
+                        <li>Panel liso de 2x8.</li>
+                    </ul>
                 </article>
-
                 <article class="tarjeta">
-                    <h3>Junior Torres</h3>
-                    <p>Desarrollo y actualización del sitio web del proyecto.</p>
+                    <h3>Conectores y fijaciones</h3>
+                    <ul>
+                        <li>Pasadores conectores de 1x1, 1x2, 2x2, 0x2 y 0x3.</li>
+                        <li>Pasadores tensores y pasadores de chapa.</li>
+                        <li>Separadores de paso de 0,25x, 0,5x, 1x, 2x, 4x, 6x y 8x.</li>
+                        <li>Extensores de separador y arandelas.</li>
+                        <li>Conectores de esquina simples, dobles, triples y cuádruples.</li>
+                        <li>Conectores de esquina de chasis grandes y pequeños.</li>
+                        <li>Conectores de separación rectos, finales, mini, de 45° y de 90°.</li>
+                        <li>Anclajes de bandas de goma y de cables.</li>
+                        <li>Collares de eje de goma y bujes de pasador de rótula.</li>
+                    </ul>
                 </article>
-		
-		<article class="tarjeta">
-                    <h3>Luis Garay</h3>
-                    <p>Revisión física y clasificación de las piezas.</p>
+                <article class="tarjeta">
+                    <h3>Movimiento y transmisión</h3>
+                    <ul>
+                        <li>Engranajes de 12, 24, 36, 48 y 60 dientes.</li>
+                        <li>Engranajes híbridos de 12, 24 y 36 dientes.</li>
+                        <li>Tornillos sinfín.</li>
+                        <li>Piñones de 8, 16 y 24 dientes.</li>
+                        <li>Eslabones de cadena, de fijación de banda de rodadura y de tracción.</li>
+                        <li>Neumáticos, cubos de rueda y ruedas omnidireccionales.</li>
+                        <li>Ejes de plástico y ejes de motor de distintas longitudes.</li>
+                        <li>Carretes anchos y cuerdas de paso.</li>
+                        <li>Bandas de goma de silicona y correas de admisión.</li>
+                        <li>Aletas de admisión cortas, medianas y largas.</li>
+                        <li>Bielas, levas, seguidores de leva, trinquetes y volante de inercia.</li>
+                        <li>Poleas tensoras, cremalleras y soportes de movimiento lineal.</li>
+                        <li>Amortiguadores y componentes de articulación de rótula.</li>
+                    </ul>
                 </article>
-
-		<article class="tarjeta">
-                    <h3>Santiago German</h3>
-                    <p>Investigación técnica y apoyo en las pruebas del prototipo.</p>
+                <article class="tarjeta">
+                    <h3>Herramientas y piezas especiales</h3>
+                    <ul>
+                        <li>Herramienta para retirar pasadores.</li>
+                        <li>Vigas de bloqueo redondas y con desplazamiento central.</li>
+                        <li>Vigas angulares de diferentes medidas y orientaciones.</li>
+                        <li>Conectores omnidireccionales y conectores angulares de izquierda y derecha.</li>
+                        <li>Componentes especiales de estructura y transmisión incluidos en el kit de competición.</li>
+                    </ul>
                 </article>
-
-		<article class="tarjeta">
-                    <h3>Alexis Fernandes</h3>
-                    <p>Bitácora, organización de evidencias y apoyo en la presentación.</p>
-                </article>
-
-
             </div>
 
-            <p style="margin-top: 25px;">
-                <strong>Institución:</strong>
-                Centro Educativo Departamental Miguela Rodríguez
-            </p>
+            <p class="nota pie-seccion">Las cantidades exactas de cada pieza pequeña se encuentran en la guía oficial de contenido del kit VEX IQ Competition de segunda generación. El robot de la fotografía muestra el cerebro, la estructura, los motores, las ruedas y el cableado montados en un modelo.</p>
 
-            <p>
-                <strong>Curso:</strong> 1.º BATIN - Continuado
-            </p>
-            <p class="nota" style="margin-top:12px;">Los roles son una propuesta inicial basada en tareas del proyecto. Confirmen con cada integrante que la función asignada corresponde al trabajo que realmente realizará.</p>
-        </section>
+            <div class="tarjetas">
+                <article class="tarjeta"><h3>Viabilidad técnica</h3><p>La viabilidad dependerá de la revisión del estado de los componentes. Se comenzará con prácticas que puedan realizarse de forma segura y con los recursos disponibles. Si faltan materiales o conocimientos, se priorizará la formación gradual y la reutilización de piezas funcionales.</p></article>
+                <article class="tarjeta"><h3>Viabilidad económica y financiera</h3><p>En la etapa inicial se dará prioridad a los materiales existentes. Si se identifican necesidades de compra, se elaborará una lista con cantidades y precios consultados, y se buscará la aprobación correspondiente. Las posibles fuentes de apoyo —recursos institucionales, donaciones o aportes autorizados— se gestionarán conforme a las normas de la institución.</p></article>
+                <article class="tarjeta"><h3>Viabilidad organizativa</h3><p>La apertura requiere coordinación con la institución y la docente tutora, disponibilidad de un espacio, definición de horarios, convocatoria de participantes y acuerdos sobre el cuidado y uso de los materiales.</p></article>
+            </div>
+        </div>
+    </section>
 
-    </main>
+    <section class="equipo" id="equipo">
+        <div class="contenedor">
+            <h2>9. Organización del equipo</h2>
+            <p>La distribución de tareas del equipo se organiza de la siguiente manera.</p>
+            <div class="tabla-contenedor">
+                <table>
+                    <thead><tr><th>Integrante</th><th>Responsabilidad propuesta</th><th>Tareas</th></tr></thead>
+                    <tbody>
+                        <tr><td>Alexis Burgos</td><td>Coordinación y seguimiento</td><td>Organizar tareas, registrar avances y coordinar con el equipo.</td></tr>
+                        <tr><td>Alexis Fabian y Santiago Benitez</td><td>Apoyo en inventario y materiales</td><td>Colaborar en la revisión, clasificación y cuidado de las piezas VEX IQ.</td></tr>
+                        <tr><td>Junior Torres y Oscar Zaracho</td><td>Apoyo en actividades prácticas</td><td>Colaborar en el armado de prototipos y el desarrollo de las sesiones.</td></tr>
+                        <tr><td>Luis Garay</td><td>Actividades de registro</td><td>Colaborar en el registro de avances y las actividades del equipo.</td></tr>
+                        <tr><td>Equipo completo</td><td>Inventario y sesiones</td><td>Revisar materiales, preparar actividades y acompañar las prácticas.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="aviso"><strong>Institución:</strong> Centro Educativo Departamental Miguela Rodríguez<br>
+                <strong>Curso:</strong> 1.º BATIN – Continuado<br>
+                <strong>Docente tutora:</strong> R. Daniela Ferreira-Delgado
+            </div>
+        </div>
+    </section>
 
-    <footer>
-        <p>Robotix | Proyecto de promoción </p>
-        <p>Aprender, crear y construir en equipo.</p>
-    </footer>
+    <section class="proceso" id="cronograma">
+        <div class="contenedor">
+            <h2>10. Cronograma de implementación</h2>
+            <div class="tabla-contenedor">
+                <table>
+                    <thead><tr><th>Etapa</th><th>Actividad</th><th>Resultado esperado</th></tr></thead>
+                    <tbody>
+                        <tr><td>1. Organización</td><td>Presentar la propuesta y solicitar aprobación institucional.</td><td>Condiciones y horario por confirmar.</td></tr>
+                        <tr><td>2. Relevamiento</td><td>Inventariar, clasificar y revisar los componentes existentes.</td><td>Inventario documentado.</td></tr>
+                        <tr><td>3. Preparación</td><td>Definir convocatoria, espacio, normas y contenidos iniciales.</td><td>Plan de apertura del club.</td></tr>
+                        <tr><td>4. Inicio</td><td>Realizar las primeras sesiones de introducción y prácticas básicas.</td><td>Participantes iniciados y registro de actividades.</td></tr>
+                        <tr><td>5. Desarrollo</td><td>Avanzar con prototipos, programación y proyectos grupales.</td><td>Prototipos y aprendizajes documentados.</td></tr>
+                        <tr><td>6. Proyección</td><td>Evaluar muestras, encuentros o competencias posibles.</td><td>Participación futura sujeta a recursos y autorización.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="nota pie-seccion"></p>
+        </div>
+    </section>
 
+    <section id="evaluacion">
+        <div class="contenedor">
+            <h2>11. Seguimiento y evaluación</h2>
+            <p>El seguimiento permitirá conocer la participación, el progreso y las necesidades del club. Se propone conservar:</p>
+            <div class="tarjetas">
+                <article class="tarjeta"><h3>Registros</h3><ul>
+                    <li>Registro de asistencia por sesión.</li>
+                    <li>Bitácora con tema, actividad, materiales utilizados y dificultades encontradas.</li>
+                    <li>Inventario actualizado y registro de préstamos o uso de materiales.</li>
+                </ul></article>
+                <article class="tarjeta"><h3>Evidencias y aprendizaje</h3><ul>
+                    <li>Fotografías o evidencias de prototipos, con autorización institucional cuando corresponda.</li>
+                    <li>Breves reflexiones de los participantes sobre lo aprendido y los próximos desafíos.</li>
+                </ul></article>
+            </div>
+            <p class="pie-seccion">La evaluación será principalmente formativa: se observará la participación, la colaboración, la comprensión de conceptos y la capacidad de probar y mejorar prototipos, sin limitarse a resultados competitivos.</p>
+        </div>
+    </section>
+
+    <section class="proceso" id="productos">
+        <div class="contenedor">
+            <h2>12. Productos y comunicación</h2>
+            <div class="tarjetas">
+                <article class="tarjeta"><h3>Anteproyecto actualizado</h3><p>Presenta la propuesta de reapertura, objetivos, alcance y viabilidad.</p></article>
+                <article class="tarjeta"><h3>Club en funcionamiento</h3><p>Sesiones formativas y prácticas, una vez autorizadas y organizadas.</p></article>
+                <article class="tarjeta"><h3>Inventario</h3><p>Registro verificable de materiales disponibles y su estado.</p></article>
+                <article class="tarjeta"><h3>Sitio web de seguimiento</h3><p>Comunicación del propósito, actividades y avances reales de Robotix.</p></article>
+                <article class="tarjeta"><h3>Presentación de lanzamiento</h3><p>Resumen de la propuesta, organización, horario tentativo y etapas.</p></article>
+            </div>
+            <p class="nota pie-seccion">La información pública y las imágenes de estudiantes se compartirán únicamente conforme a las normas institucionales y con las autorizaciones necesarias.</p>
+        </div>
+    </section>
+
+    <section id="conclusiones">
+        <div class="contenedor">
+            <h2>13. Conclusiones preliminares</h2>
+            <p>Robotix cambia su enfoque hacia la reactivación del Club de Robótica como espacio de enseñanza y práctica. La prioridad será dar continuidad a la iniciativa anterior mediante la reactivación del club y la formación práctica de estudiantes interesados en robótica.</p>
+            <p>El primer paso concreto será inventariar los materiales, confirmar la viabilidad y coordinar con la institución la convocatoria y el horario. Con una planificación progresiva, el club podrá crecer y explorar en el futuro la participación en competencias o actividades interinstitucionales.</p>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p><strong>Robotix | La tecnología en movimiento</strong></p>
+    <p>Proyecto de reactivación del Club de Robótica</p>
+    <p class="nota-pie">Centro Educativo Departamental Miguela Rodríguez · 1.º BATIN – Continuado</p>
+</footer>
 </body>
 </html>
